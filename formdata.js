@@ -13,7 +13,7 @@
     FormData.prototype.append = function(key, value) {
         this._fields.push([key, value]);
     }
-    FormData.prototype.__toString = function() {
+    FormData.prototype.toString = function() {
         var boundary = this._boundary;
         var body = "--" + boundary + "\r\n";
         this._fields.forEach(function(field) {
