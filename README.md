@@ -10,11 +10,27 @@ FormData objects provide a way to easily construct a set of key/value pairs repr
 
 https://developer.mozilla.org/en/XMLHttpRequest/FormData
 
-## How to use it
+## How to use it ?
 
-Just include *formdata.js*:
+Include *formdata.js*:
 
     <script type="text/javascript" src="formdata.js"></script>
+
+And use xmlhttprequest with some bad adjustments.
+
+    var data = new FormData();
+    data.append('file', document.getElementById('file').files[0]);
+
+    xhr.open('POST', '/', true);
+    xhr.setRequestHeader("Cache-Control", "no-cache");
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    // this is really bad
+    if (data.fake) {
+       xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary="+ data.boundary);
+       xhr.sendAsBinary(data.toString());
+    } else {
+       xhr.send(data);
+    }
 
 ## Tests
 

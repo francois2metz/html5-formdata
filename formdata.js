@@ -7,14 +7,15 @@
     if (w.FormData)
         return;
     function FormData() {
-        this._boundary = "--------FormData" + Math.random();
+        this.fake = true;
+        this.boundary = "--------FormData" + Math.random();
         this._fields = [];
     }
     FormData.prototype.append = function(key, value) {
         this._fields.push([key, value]);
     }
     FormData.prototype.toString = function() {
-        var boundary = this._boundary;
+        var boundary = this.boundary;
         var body = "";
         this._fields.forEach(function(field) {
             body += "--" + boundary + "\r\n";
