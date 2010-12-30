@@ -15,8 +15,9 @@
     }
     FormData.prototype.toString = function() {
         var boundary = this._boundary;
-        var body = "--" + boundary + "\r\n";
+        var body = "";
         this._fields.forEach(function(field) {
+            body += "--" + boundary + "\r\n";
             // file upload
             if (field[1].name) {
                 var file = field[1];
@@ -27,8 +28,8 @@
                 body += "Content-Disposition: form-data; name='"+ field[0] +"';\r\n\r\n";
                 body += field[1] + "\r\n";
             }
-            body += "--" + boundary;
         });
+        body += "--" + boundary +"--";
         return body;
     }
     w.FormData = FormData;
