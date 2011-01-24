@@ -8,7 +8,7 @@ Emulate *FormData* object for browsers wich support [FileAPI](http://www.w3.org/
 
 FormData objects provide a way to easily construct a set of key/value pairs representing form fields and their values, which can then be easily sent using the XMLHttpRequest send() method.
 
-https://developer.mozilla.org/en/XMLHttpRequest/FormData
+[developer.mozilla.org/en/XMLHttpRequest/FormData](https://developer.mozilla.org/en/XMLHttpRequest/FormData)
 
 ## How to use it ?
 
@@ -31,6 +31,10 @@ And use xmlhttprequest with some bad adjustments.
     } else {
        xhr.send(data);
     }
+
+### With jquery.form.js
+
+jquery.form.js have been patched and can use fake FormData. See [github.com/AF83/form](https://github.com/AF83/form).
 
 ## Tests
 
