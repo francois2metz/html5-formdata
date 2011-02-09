@@ -15,7 +15,7 @@ $(document).ready(function(){
         var data = new FormData();
         data.append('chuck', 'norris');
         data.boundary = '-a';
-        equal(data, "---a\r\nContent-Disposition: form-data; name='chuck';\r\n\r\nnorris\r\n---a--", "body should correctly formatted");
+        equal(data, "---a\r\nContent-Disposition: form-data; name=\"chuck\";\r\n\r\nnorris\r\n---a--", "body should correctly formatted");
     });
 
     test("append file", function() {
@@ -27,6 +27,6 @@ $(document).ready(function(){
             }
         });
         data.boundary = '-a';
-        equal(data, "---a\r\nContent-Disposition: form-data; name='chuck'; filename='norris.pdf'\r\nContent-Type: application/octet-stream\r\n\r\nnorris\r\n---a--", "body should correctly formatted");
+        equal(data, "---a\r\nContent-Disposition: form-data; name=\"chuck\"; filename=\"norris.pdf\"\r\nContent-Type: application/octet-stream\r\n\r\nnorris\r\n---a--", "body should correctly formatted");
     });
 });
