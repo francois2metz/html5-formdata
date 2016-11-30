@@ -6,6 +6,14 @@
 (function(w) {
     if (w.FormData)
         return;
+    // MSIE8 does not have forEach(), see http://stackoverflow.com/a/22598415/2704037
+    if (typeof Array.prototype.forEach != 'function') {
+        Array.prototype.forEach = function(callback) {
+            for (var i = 0; i < this.length; i++) {
+                callback.apply(this, [this[i], 1, this]);
+            }
+        }
+    }
     function FormData() {
         this.fake = true;
         this.boundary = "--------FormData" + Math.random();
